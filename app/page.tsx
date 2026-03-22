@@ -296,11 +296,12 @@ export default function Home() {
 
               {/* Available badge */}
               {content.availableForWork && (
-                <div style={{
+                <a href="#contact" style={{
                   display: "flex", alignItems: "center", gap: "8px",
                   padding: "10px 20px", borderRadius: "10px",
                   border: "1px solid rgba(255,255,255,0.12)",
                   backgroundColor: "rgb(16,16,16)", width: "100%", justifyContent: "center",
+                  textDecoration: "none", cursor: "pointer",
                 }}>
                   <div className="pulse-dot" style={{
                     width: "8px", height: "8px", borderRadius: "50%",
@@ -309,7 +310,7 @@ export default function Home() {
                   <span style={{ fontSize: "15px", color: "#fff", fontFamily: "var(--font-space-grotesk)", fontWeight: 500 }}>
                     Open to conversations
                   </span>
-                </div>
+                </a>
               )}
 
               {/* Name + socials */}
@@ -433,17 +434,21 @@ export default function Home() {
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
                     {/* Header: always visible */}
-                    <div className="card-header" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px", flexWrap: "wrap" }}>
-                      <CompanyLogo name={job.company} />
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 4px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
+                    <div className="card-header" style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
+                      {/* Row 1: logo + role */}
+                      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                        <CompanyLogo name={job.company} />
+                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: 0, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.3em" }}>
                           {job.role}
                         </p>
+                      </div>
+                      {/* Row 2: company + dates */}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", paddingLeft: "58px" }}>
                         <p style={{ fontSize: "16px", color: "#999", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
                           {job.company}
                         </p>
+                        <div style={dateBadge}>{job.dates}</div>
                       </div>
-                      <div style={dateBadge}>{job.dates}</div>
                     </div>
                     {/* Bullets — desktop only */}
                     <div className="desktop-only">
@@ -490,17 +495,21 @@ export default function Home() {
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
                     {/* Header: always visible */}
-                    <div className="card-header" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px", flexWrap: "wrap" }}>
-                      <CompanyLogo name={edu.institution} color="#a78bfa" />
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 4px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
+                    <div className="card-header" style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
+                      {/* Row 1: logo + degree */}
+                      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                        <CompanyLogo name={edu.institution} color="#a78bfa" />
+                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: 0, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.3em" }}>
                           {edu.title}
                         </p>
+                      </div>
+                      {/* Row 2: institution + dates */}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", paddingLeft: "58px" }}>
                         <p style={{ fontSize: "16px", color: "#999", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
                           {edu.institution}
                         </p>
+                        <div style={dateBadge}>{edu.dates}</div>
                       </div>
-                      <div style={dateBadge}>{edu.dates}</div>
                     </div>
                     {/* Description — desktop only */}
                     <div className="desktop-only">
@@ -533,18 +542,18 @@ export default function Home() {
                 <div className="desktop-only" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                   {[
                     { label: "Contact No", value: content.contact.phone, href: `tel:${content.contact.phone}`,
-                      icon: <PhoneIcon size={20} weight="fill" color="#28e98c" /> },
+                      icon: <PhoneIcon size={28} weight="fill" color="#28e98c" /> },
                     { label: "Email", value: content.contact.email, href: `mailto:${content.contact.email}`,
-                      icon: <EnvelopeSimpleIcon size={20} weight="fill" color="#28e98c" /> },
+                      icon: <EnvelopeSimpleIcon size={28} weight="fill" color="#28e98c" /> },
                     { label: "Address", value: content.contact.address, href: "https://www.google.com/maps",
-                      icon: <MapPinIcon size={20} weight="fill" color="#28e98c" /> },
+                      icon: <MapPinIcon size={28} weight="fill" color="#28e98c" /> },
                   ].map((item) => (
                     <div key={item.label} style={{
                       backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(39,39,39)",
                       borderRadius: "12px", padding: "18px 20px",
                       display: "flex", alignItems: "center", gap: "16px",
                     }}>
-                      <div style={{ flexShrink: 0, width: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <div style={{ flexShrink: 0, width: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         {item.icon}
                       </div>
                       <div style={{ minWidth: 0 }}>
@@ -552,8 +561,8 @@ export default function Home() {
                           {item.label}
                         </p>
                         <a href={item.href} target="_blank" rel="noopener noreferrer" style={{
-                          fontSize: "14px", color: "#fff", fontFamily: "var(--font-space-grotesk)",
-                          fontWeight: 500, textDecoration: "none",
+                          fontSize: "18px", color: "#fff", fontFamily: "var(--font-space-grotesk)",
+                          fontWeight: 400, textDecoration: "none",
                           display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
                         }}>
                           {item.value}
