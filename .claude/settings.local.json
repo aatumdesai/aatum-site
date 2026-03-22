@@ -5,7 +5,27 @@
       "Bash(npx tsc:*)",
       "Bash(python3:*)",
       "Bash(node --version:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git commit:*)",
+      "Bash(rm /c/dev/GitHub/aatum-site/components/ScreensaverHero.tsx)",
+      "Bash(rm -rf /c/dev/GitHub/aatum-site/app/contact)",
+      "Bash(rm -rf /c/dev/GitHub/aatum-site/app/resume)",
+      "Bash(rm /c/dev/GitHub/aatum-site/README.md)",
+      "WebFetch(domain:resume-cv.framer.website)",
+      "Bash(curl -s \"https://resume-cv.framer.website/\")",
+      "Bash(curl -s \"https://resume-cv.framer.website/\" -L --max-time 30 -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\")",
+      "Bash(curl -s https://resume-cv.framer.website/ -L --max-time 30 -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\")",
+      "Bash(curl -v \"https://resume-cv.framer.website/\" --max-time 30 -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\")",
+      "Bash(curl -s https://resume-cv.framer.website/ -L --max-time 30 --ssl-no-revoke -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\")",
+      "Bash(\"$TEMP/framer_page.html\")",
+      "Read(//c/dev/GitHub/aatum-site/$TEMP/**)",
+      "Bash(echo \"TEMP=$TEMP\")",
+      "Bash(curl -s https://resume-cv.framer.website/)",
+      "Bash(curl -s \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
+      "Bash(curl -s --tlsv1.2 -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
+      "Bash(curl -v \"https://resume-cv.framer.website/\")",
+      "Bash(curl -sk --ssl-no-revoke -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
+      "Bash(npm install:*)"
     ]
   }
 }
