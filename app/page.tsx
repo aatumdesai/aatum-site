@@ -3,26 +3,27 @@
 import { useState, useEffect } from "react";
 import { content } from "../content";
 import {
-  Briefcase, Star, Desktop, GraduationCap, PaperPlaneTilt,
-  DownloadSimple, Phone, EnvelopeSimple, MapPin, User,
-  Compass, Rocket, Tag, ChartBar, Gear, MagnifyingGlass,
-  CurrencyDollar, UsersThree, Database, Table, Cloud,
+  SuitcaseSimpleIcon, BrainIcon, TerminalWindowIcon, CertificateIcon, ChatCircleDotsIcon,
+  DownloadSimpleIcon, PaperPlaneTiltIcon, PhoneIcon, EnvelopeSimpleIcon, MapPinIcon,
+  CompassIcon, RocketIcon, TagIcon, ChartBarIcon, GearIcon, MagnifyingGlassIcon,
+  CurrencyDollarIcon, UsersThreeIcon,
+  DatabaseIcon, TableIcon, CloudIcon,
 } from "@phosphor-icons/react";
 import { siPython, siLooker } from "simple-icons";
 
 // ── Typewriter word → Twemoji icon ────────────────────────────
 const TWEMOJI = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg";
 const TYPEWRITER_ICONS: Record<string, React.ReactNode> = {
-  "Business Strategist": <img src={`${TWEMOJI}/1f4bc.svg`} width={42} height={42} alt="" />,  // 💼 briefcase
-  "Guitar Hero":         <img src={`${TWEMOJI}/1f3b8.svg`} width={42} height={42} alt="" />,  // 🎸 guitar
-  "Chess Player":        <img src={`${TWEMOJI}/265f.svg`} width={42} height={42} alt="" />,    // ♟️ chess pawn
-  "Golfer":              <img src={`${TWEMOJI}/1f3cc.svg`} width={42} height={42} alt="" />,    // 🏌️ golfer
+  "Business Strategist": <img src={`${TWEMOJI}/1f4bc.svg`} width={42} height={42} alt="" />,
+  "Guitar Hero":         <img src={`${TWEMOJI}/1f3b8.svg`} width={42} height={42} alt="" />,
+  "Chess Player":        <img src={`${TWEMOJI}/265f.svg`} width={42} height={42} alt="" />,
+  "Golfer":              <img src={`${TWEMOJI}/1f3cc.svg`} width={42} height={42} alt="" />,
 };
 
 // ── Typewriter ────────────────────────────────────────────────
 function Typewriter({ words }: { words: string[] }) {
-  const [text, setText] = useState(words[0] ?? "");
-  const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("pausing");
+  const [text, setText] = useState("");
+  const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
   const [wordIdx, setWordIdx] = useState(0);
 
   useEffect(() => {
@@ -90,22 +91,13 @@ function SocialBtn({ href, children }: { href: string; children: React.ReactNode
 }
 
 function Divider() {
-  return (
-    <div style={{ height: "1px", flexShrink: 0, backgroundColor: "rgb(36,36,36)" }} />
-  );
+  return <div style={{ height: "1px", flexShrink: 0, backgroundColor: "rgb(36,36,36)" }} />;
 }
 
 function SectionHeading({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "24px" }}>
-      <div style={{
-        width: "40px", height: "40px", borderRadius: "10px",
-        backgroundColor: "rgb(22,22,22)", border: "1px solid rgba(255,255,255,0.1)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        color: "rgb(200,200,200)", flexShrink: 0,
-      }}>
-        {icon}
-      </div>
+    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px", color: "#fff" }}>
+      {icon}
       <h2 style={{
         fontFamily: "var(--font-space-grotesk)", fontSize: "24px",
         fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.4em", color: "#fff", margin: 0,
@@ -116,7 +108,6 @@ function SectionHeading({ icon, children }: { icon: React.ReactNode; children: R
   );
 }
 
-// Date badge shared style
 const dateBadge: React.CSSProperties = {
   padding: "6px 14px", backgroundColor: "rgb(25,25,25)",
   border: "1px solid rgb(48,48,48)", borderRadius: "8px",
@@ -124,9 +115,7 @@ const dateBadge: React.CSSProperties = {
   fontFamily: "var(--font-space-grotesk)", whiteSpace: "nowrap", flexShrink: 0,
 };
 
-// ── Company / school logo (Clearbit with initial fallback) ────
-// For local files: put image in /public/logos/ and use e.g. { src: "/logos/abbott.png" }
-// For auto favicon: use { domain: "productboard.com" }
+// ── Company / school logos ────────────────────────────────────
 const COMPANY_LOGOS: Record<string, { src: string } | { domain: string }> = {
   "Productboard":                              { src: "/logos/productboard.png" },
   "Abbott":                                    { src: "/logos/abbott.png" },
@@ -158,73 +147,67 @@ function CompanyLogo({ name, color = "#28e98c" }: { name: string; color?: string
   );
 }
 
-// ── Skill icons (Phosphor) ─────────────────────────────────────
+// ── Skill icons ───────────────────────────────────────────────
 const SKILL_ICONS: Record<string, React.ReactNode> = {
-  "Product Strategy":        <Compass size={20} weight="fill" />,
-  "Go-to-Market Strategy":   <Rocket size={20} weight="fill" />,
-  "Pricing Strategy":        <Tag size={20} weight="fill" />,
-  "Financial Modeling":      <ChartBar size={20} weight="fill" />,
-  "Business Operations":     <Gear size={20} weight="fill" />,
-  "Customer/Market Research":<MagnifyingGlass size={20} weight="fill" />,
-  "Monetization":            <CurrencyDollar size={20} weight="fill" />,
-  "Stakeholder Alignment":   <UsersThree size={20} weight="fill" />,
+  "Product Strategy":         <CompassIcon size={24} weight="fill" />,
+  "Go-to-Market Strategy":    <RocketIcon size={24} weight="fill" />,
+  "Pricing Strategy":         <TagIcon size={24} weight="fill" />,
+  "Financial Modeling":       <ChartBarIcon size={24} weight="fill" />,
+  "Business Operations":      <GearIcon size={24} weight="fill" />,
+  "Customer/Market Research": <MagnifyingGlassIcon size={24} weight="fill" />,
+  "Monetization":             <CurrencyDollarIcon size={24} weight="fill" />,
+  "Stakeholder Alignment":    <UsersThreeIcon size={24} weight="fill" />,
 };
 
-// ── Software icons (simple-icons + Phosphor fallbacks) ─────────
-function hexToRgba(hex: string, alpha: number) {
-  const r = parseInt(hex.slice(0, 2), 16);
-  const g = parseInt(hex.slice(2, 4), 16);
-  const b = parseInt(hex.slice(4, 6), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
-
+// ── Software icons ────────────────────────────────────────────
 type IconEntry = { icon: React.ReactNode; bg: string; border: string };
 
-function siEntry(data: { path: string; hex: string }): IconEntry {
-  return {
-    icon: <svg role="img" viewBox="0 0 24 24" width={20} height={20} fill={`#${data.hex}`}><path d={data.path} /></svg>,
-    bg: hexToRgba(data.hex, 0.12),
-    border: hexToRgba(data.hex, 0.28),
-  };
+function siBrand(data: { path: string; hex: string }) {
+  return <svg role="img" viewBox="0 0 24 24" width={22} height={22} fill={`#${data.hex}`}><path d={data.path} /></svg>;
 }
 
-const SOFTWARE_ICONS: Record<string, IconEntry> = {
-  "Python":                   siEntry(siPython),
-  "Looker":                   siEntry(siLooker),
-  "SQL":                      { icon: <Database size={20} weight="fill" />,  bg: "rgba(99,102,241,0.12)",  border: "rgba(99,102,241,0.28)" },
-  "Excel (Advanced)":         { icon: <Table size={20} weight="fill" />,     bg: "", border: "" },
-  "Salesforce":               { icon: <Cloud size={20} weight="fill" />,     bg: "", border: "" },
-  "Sawtooth (Conjoint/Maxdiff)": { icon: (
-    <svg viewBox="0 0 24 24" width={20} height={20} fill="currentColor">
-      <path d="M3 21V12L4.5 8 6 12V21H3zm.5-10.5h2v1.5h-2v-1.5z" />
-      <path d="M7 21l3.5-9 3.5 9H7zm5.5 0L17 9l4.5 12h-9z" />
-    </svg>
-  ), bg: "", border: "" },
+const SawtoothIcon = () => (
+  <svg viewBox="0 0 24 24" width={22} height={22} fill="currentColor">
+    <path d="M3 21V12L4.5 8 6 12V21H3zm.5-10.5h2v1.5h-2v-1.5z" />
+    <path d="M7 21l3.5-9 3.5 9H7zm5.5 0L17 9l4.5 12h-9z" />
+  </svg>
+);
+
+const SOFTWARE_ICONS: Record<string, React.ReactNode> = {
+  "Python":                      siBrand(siPython),
+  "Looker":                      siBrand(siLooker),
+  "SQL":                         <DatabaseIcon size={22} weight="fill" />,
+  "Excel (Advanced)":            <TableIcon size={22} weight="fill" />,
+  "Salesforce":                  <CloudIcon size={22} weight="fill" />,
+  "Sawtooth (Conjoint/Maxdiff)": <SawtoothIcon />,
 };
 
+const SKILL_PALETTE = [
+  { bg: "rgba(40,233,140,0.1)",  border: "rgba(40,233,140,0.22)",  color: "#28e98c" },
+  { bg: "rgba(99,102,241,0.12)", border: "rgba(99,102,241,0.26)",  color: "#a5b4fc" },
+  { bg: "rgba(245,158,11,0.12)", border: "rgba(245,158,11,0.26)",  color: "#fbbf24" },
+  { bg: "rgba(236,72,153,0.1)",  border: "rgba(236,72,153,0.24)",  color: "#f472b6" },
+  { bg: "rgba(14,165,233,0.1)",  border: "rgba(14,165,233,0.24)",  color: "#38bdf8" },
+  { bg: "rgba(239,68,68,0.1)",   border: "rgba(239,68,68,0.24)",   color: "#f87171" },
+  { bg: "rgba(168,85,247,0.1)",  border: "rgba(168,85,247,0.24)",  color: "#c084fc" },
+  { bg: "rgba(34,197,94,0.1)",   border: "rgba(34,197,94,0.24)",   color: "#4ade80" },
+];
+
 function SkillGrid({ items, iconMap, max = 8 }: {
-  items: { name: string; category?: string }[];
+  items: { name: string }[];
   iconMap: Record<string, React.ReactNode | IconEntry>;
   max?: number;
 }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+    <div className="skill-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
       {items.slice(0, max).map((item, i) => {
         const entry = iconMap[item.name];
-        // IconEntry has bg/border; bare ReactNode is for skills (use green)
-        const SKILL_PALETTE = [
-          { bg: "rgba(40,233,140,0.1)",  border: "rgba(40,233,140,0.22)",  color: "#28e98c" },
-          { bg: "rgba(99,102,241,0.12)", border: "rgba(99,102,241,0.26)",  color: "#a5b4fc" },
-          { bg: "rgba(245,158,11,0.12)", border: "rgba(245,158,11,0.26)",  color: "#fbbf24" },
-          { bg: "rgba(236,72,153,0.1)",  border: "rgba(236,72,153,0.24)",  color: "#f472b6" },
-          { bg: "rgba(14,165,233,0.1)",  border: "rgba(14,165,233,0.24)",  color: "#38bdf8" },
-          { bg: "rgba(239,68,68,0.1)",   border: "rgba(239,68,68,0.24)",   color: "#f87171" },
-          { bg: "rgba(168,85,247,0.1)",  border: "rgba(168,85,247,0.24)",  color: "#c084fc" },
-          { bg: "rgba(34,197,94,0.1)",   border: "rgba(34,197,94,0.24)",   color: "#4ade80" },
-        ];
         const isEntry = entry && typeof entry === "object" && "bg" in (entry as object);
         const palette = SKILL_PALETTE[i % SKILL_PALETTE.length];
         const icon = isEntry ? (entry as IconEntry).icon : entry as React.ReactNode;
+        const boxBg = isEntry ? (entry as IconEntry).bg : palette.bg;
+        const boxBorder = isEntry ? (entry as IconEntry).border : palette.border;
+        const boxColor = isEntry ? "#fff" : palette.color;
         return (
           <div key={i} style={{
             backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(36,36,36)",
@@ -233,13 +216,13 @@ function SkillGrid({ items, iconMap, max = 8 }: {
           }}>
             <div style={{
               width: "40px", height: "40px", borderRadius: "10px",
-              backgroundColor: palette.bg, border: `1px solid ${palette.border}`,
+              backgroundColor: boxBg, border: `1px solid ${boxBorder}`,
               display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0, color: palette.color,
+              flexShrink: 0, color: boxColor,
             }}>
               {icon ?? <span style={{ fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-space-grotesk)" }}>{item.name.charAt(0)}</span>}
             </div>
-            <p style={{ fontSize: "14px", fontWeight: 600, color: "#fff", margin: 0, fontFamily: "var(--font-space-grotesk)" }}>
+            <p style={{ fontSize: "16px", fontWeight: 500, color: "#999", margin: 0, fontFamily: "var(--font-space-grotesk)" }}>
               {item.name}
             </p>
           </div>
@@ -249,19 +232,52 @@ function SkillGrid({ items, iconMap, max = 8 }: {
   );
 }
 
+function ContactForm() {
+  return (
+    <form style={{ display: "flex", flexDirection: "column", gap: "12px" }} action="https://formspree.io/f/xyknavzl" method="POST">
+      {[
+        { placeholder: "Full Name", name: "name", type: "text" },
+        { placeholder: "Email", name: "email", type: "email" },
+        { placeholder: "Phone Number", name: "phone", type: "tel" },
+      ].map((field) => (
+        <input key={field.name} type={field.type} name={field.name} placeholder={field.placeholder} style={{
+          backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
+          borderRadius: "8px", padding: "14px 16px",
+          color: "#fff", fontSize: "14px", fontFamily: "var(--font-space-grotesk)",
+          outline: "none", width: "100%", boxSizing: "border-box",
+        }} />
+      ))}
+      <textarea placeholder="Message" name="message" rows={5} style={{
+        backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
+        borderRadius: "8px", padding: "14px 16px",
+        color: "#fff", fontSize: "14px", fontFamily: "var(--font-space-grotesk)",
+        outline: "none", resize: "vertical", width: "100%", boxSizing: "border-box",
+      }} />
+      <button type="submit" style={{
+        backgroundColor: "rgb(40,233,140)", color: "rgb(0,0,0)",
+        border: "none", borderRadius: "10px", padding: "14px",
+        fontSize: "14px", fontWeight: 600, fontFamily: "var(--font-space-grotesk)",
+        cursor: "pointer", width: "100%",
+      }}>
+        Send Message
+      </button>
+    </form>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────
 export default function Home() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#000" }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{
+        <div className="layout-wrapper" style={{
           display: "flex", flexDirection: "row", alignItems: "flex-start",
           gap: "70px", width: "100%", maxWidth: "1440px",
-          padding: "60px 40px 80px",
+          padding: "60px 40px 80px", boxSizing: "border-box",
         }}>
 
           {/* ── Left Card ── */}
-          <div style={{ flex: "1 0 0", maxWidth: "360px", position: "sticky", top: "60px" }}>
+          <div className="left-card-col" style={{ flex: "1 0 0", maxWidth: "360px", position: "sticky", top: "60px" }}>
             <div style={{
               backgroundColor: "rgb(16,16,16)", borderRadius: "30px",
               border: "1px solid rgba(255,255,255,0.1)", padding: "20px",
@@ -273,29 +289,25 @@ export default function Home() {
                 width: "100%", height: "300px", backgroundColor: "#1a1a1a",
                 borderRadius: "24px", border: "1px solid rgba(255,255,255,0.1)",
                 overflow: "hidden", display: "flex", alignItems: "center",
-                justifyContent: "center", color: "#2a2a2a", flexShrink: 0,
+                justifyContent: "center", flexShrink: 0,
               }}>
                 <img src="/Aatum.jpg" alt="Aatum Desai" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
 
-              {/* Available to chat badge */}
+              {/* Available badge */}
               {content.availableForWork && (
                 <div style={{
                   display: "flex", alignItems: "center", gap: "8px",
                   padding: "10px 20px", borderRadius: "10px",
                   border: "1px solid rgba(255,255,255,0.12)",
-                  backgroundColor: "rgb(16,16,16)", width: "100%",
-                  justifyContent: "center",
+                  backgroundColor: "rgb(16,16,16)", width: "100%", justifyContent: "center",
                 }}>
                   <div className="pulse-dot" style={{
                     width: "8px", height: "8px", borderRadius: "50%",
                     backgroundColor: "#28e98c", flexShrink: 0,
                   }} />
-                  <span style={{
-                    fontSize: "14px", color: "#fff",
-                    fontFamily: "var(--font-space-grotesk)", fontWeight: 500,
-                  }}>
-                    Available to chat
+                  <span style={{ fontSize: "15px", color: "#fff", fontFamily: "var(--font-space-grotesk)", fontWeight: 500 }}>
+                    Open to conversations
                   </span>
                 </div>
               )}
@@ -336,7 +348,7 @@ export default function Home() {
                   color: "rgb(180,180,180)", fontSize: "14px", fontWeight: 500,
                   fontFamily: "var(--font-space-grotesk)", textDecoration: "none", whiteSpace: "nowrap",
                 }}>
-                  <DownloadSimple size={17} weight="fill" />
+                  <DownloadSimpleIcon size={17} weight="fill" />
                   Download CV
                 </a>
                 <a href="#contact" style={{
@@ -345,7 +357,7 @@ export default function Home() {
                   color: "rgb(0,0,0)", fontSize: "14px", fontWeight: 600,
                   fontFamily: "var(--font-space-grotesk)", textDecoration: "none", whiteSpace: "nowrap",
                 }}>
-                  <PaperPlaneTilt size={17} weight="fill" />
+                  <PaperPlaneTiltIcon size={17} weight="fill" />
                   Contact Me
                 </a>
               </div>
@@ -353,15 +365,15 @@ export default function Home() {
           </div>
 
           {/* ── Right Content ── */}
-          <main style={{ flex: "1 0 0", display: "flex", flexDirection: "column", gap: "40px", minWidth: 0 }}>
+          <main className="right-col" style={{ flex: "1 0 0", display: "flex", flexDirection: "column", gap: "40px", minWidth: 0 }}>
 
             {/* ── Hero ── */}
-            <section style={{
+            <section className="hero-section" style={{
               display: "flex", flexDirection: "column",
               gap: "30px", paddingTop: "80px", width: "100%",
             }}>
-              {/* Heading group: greeting + name block + description */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "100%" }}>
+              {/* Desktop: full heading block. Hidden on mobile via CSS. */}
+              <div className="desktop-only" style={{ display: "flex", flexDirection: "column", gap: "20px", width: "100%" }}>
                 <p style={{
                   fontSize: "24px", fontWeight: 500, color: "#999",
                   fontFamily: "var(--font-space-grotesk)", margin: 0,
@@ -384,28 +396,24 @@ export default function Home() {
                     {content.location}
                   </h1>
                 </div>
-                <p style={{
-                  fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)",
-                  lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#fff", margin: 0,
-                }}>
-                  {content.about}
-                </p>
               </div>
 
-              {/* Stats row */}
-              <div style={{ display: "flex", flexDirection: "row", gap: "40px", alignItems: "center" }}>
+              {/* About blurb — always visible */}
+              <p style={{
+                fontSize: "16px", fontWeight: 400, fontFamily: "var(--font-space-grotesk)",
+                lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#fff", margin: 0,
+              }}>
+                {content.about}
+              </p>
+
+              {/* Stats — desktop only */}
+              <div className="desktop-only" style={{ display: "flex", flexDirection: "row", gap: "40px", alignItems: "center", flexWrap: "wrap" }}>
                 {content.stats.map((stat, i) => (
                   <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                    <div style={{
-                      fontFamily: "var(--font-space-grotesk)", fontSize: "30px", fontWeight: 600,
-                      color: "#fff", lineHeight: 1,
-                    }}>
+                    <div style={{ fontFamily: "var(--font-space-grotesk)", fontSize: "30px", fontWeight: 600, color: "#fff", lineHeight: 1 }}>
                       {stat.value}
                     </div>
-                    <p style={{
-                      fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)",
-                      letterSpacing: "-0.02em", lineHeight: "1.6em", color: "#999", margin: 0,
-                    }}>
+                    <p style={{ fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em", color: "#999", margin: 0 }}>
                       {stat.label}
                     </p>
                   </div>
@@ -417,14 +425,15 @@ export default function Home() {
 
             {/* ── Experience ── */}
             <section id="experience">
-              <SectionHeading icon={<Briefcase size={20} weight="fill" />}>Experience</SectionHeading>
+              <SectionHeading icon={<SuitcaseSimpleIcon size={24} weight="fill" />}>Experience</SectionHeading>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {content.experience.map((job, i) => (
                   <div key={i} style={{
                     backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+                    {/* Header: always visible */}
+                    <div className="card-header" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px", flexWrap: "wrap" }}>
                       <CompanyLogo name={job.company} />
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 4px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
@@ -436,15 +445,18 @@ export default function Home() {
                       </div>
                       <div style={dateBadge}>{job.dates}</div>
                     </div>
-                    <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                      {job.bullets.map((bullet, j) => (
-                        <li key={j} style={{ display: "flex", gap: "10px", fontSize: "16px", lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#999", fontFamily: "var(--font-space-grotesk)", fontWeight: 500 }}>
-                          <span style={{ marginTop: "9px", width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "#28e98c", flexShrink: 0 }} />
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Bullets — desktop only */}
+                    <div className="desktop-only">
+                      <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {job.bullets.map((bullet, j) => (
+                          <li key={j} style={{ display: "flex", gap: "10px", fontSize: "16px", lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#999", fontFamily: "var(--font-space-grotesk)", fontWeight: 500 }}>
+                            <span style={{ marginTop: "9px", width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "#28e98c", flexShrink: 0 }} />
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -454,7 +466,7 @@ export default function Home() {
 
             {/* ── Skills ── */}
             <section id="skills">
-              <SectionHeading icon={<Star size={20} weight="fill" />}>Skills</SectionHeading>
+              <SectionHeading icon={<BrainIcon size={24} weight="fill" />}>Skills</SectionHeading>
               <SkillGrid items={content.skills} iconMap={SKILL_ICONS} max={8} />
             </section>
 
@@ -462,7 +474,7 @@ export default function Home() {
 
             {/* ── Software ── */}
             <section id="software">
-              <SectionHeading icon={<Desktop size={20} weight="fill" />}>Software</SectionHeading>
+              <SectionHeading icon={<TerminalWindowIcon size={24} weight="fill" />}>Software</SectionHeading>
               <SkillGrid items={content.software} iconMap={SOFTWARE_ICONS} max={6} />
             </section>
 
@@ -470,14 +482,15 @@ export default function Home() {
 
             {/* ── Education ── */}
             <section id="education">
-              <SectionHeading icon={<GraduationCap size={20} weight="fill" />}>Education</SectionHeading>
+              <SectionHeading icon={<CertificateIcon size={24} weight="fill" />}>Education</SectionHeading>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {content.education.map((edu, i) => (
                   <div key={i} style={{
                     backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+                    {/* Header: always visible */}
+                    <div className="card-header" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px", flexWrap: "wrap" }}>
                       <CompanyLogo name={edu.institution} color="#a78bfa" />
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 4px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em" }}>
@@ -489,10 +502,13 @@ export default function Home() {
                       </div>
                       <div style={dateBadge}>{edu.dates}</div>
                     </div>
-                    <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
-                    <p style={{ fontSize: "16px", lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#999", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, whiteSpace: "pre-line" }}>
-                      {edu.description}
-                    </p>
+                    {/* Description — desktop only */}
+                    <div className="desktop-only">
+                      <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
+                      <p style={{ fontSize: "16px", lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#999", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, whiteSpace: "pre-line" }}>
+                        {edu.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -502,25 +518,26 @@ export default function Home() {
 
             {/* ── Contact ── */}
             <section id="contact">
-              <SectionHeading icon={<PaperPlaneTilt size={20} weight="fill" />}>Contact</SectionHeading>
+              <SectionHeading icon={<ChatCircleDotsIcon size={24} weight="fill" />}>Contact</SectionHeading>
 
-              <h3 style={{
+              {/* Heading — desktop only */}
+              <h3 className="desktop-only" style={{
                 fontFamily: "var(--font-space-grotesk)", fontSize: "28px", fontWeight: 700,
                 color: "#fff", margin: "0 0 20px 0", letterSpacing: "-0.02em",
               }}>
                 Let&apos;s Get in Touch!
               </h3>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "start" }}>
-                {/* Left: contact info */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "start" }}>
+                {/* Info cards — desktop only */}
+                <div className="desktop-only" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                   {[
                     { label: "Contact No", value: content.contact.phone, href: `tel:${content.contact.phone}`,
-                      icon: <Phone size={20} weight="fill" color="#28e98c" /> },
+                      icon: <PhoneIcon size={20} weight="fill" color="#28e98c" /> },
                     { label: "Email", value: content.contact.email, href: `mailto:${content.contact.email}`,
-                      icon: <EnvelopeSimple size={20} weight="fill" color="#28e98c" /> },
+                      icon: <EnvelopeSimpleIcon size={20} weight="fill" color="#28e98c" /> },
                     { label: "Address", value: content.contact.address, href: "https://www.google.com/maps",
-                      icon: <MapPin size={20} weight="fill" color="#28e98c" /> },
+                      icon: <MapPinIcon size={20} weight="fill" color="#28e98c" /> },
                   ].map((item) => (
                     <div key={item.label} style={{
                       backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(39,39,39)",
@@ -546,35 +563,8 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Right: form */}
-                <form style={{ display: "flex", flexDirection: "column", gap: "12px" }} action="https://formspree.io/f/xyknavzl" method="POST">
-                  {[
-                    { placeholder: "Full Name", name: "name", type: "text" },
-                    { placeholder: "Email", name: "email", type: "email" },
-                    { placeholder: "Phone Number", name: "phone", type: "tel" },
-                  ].map((field) => (
-                    <input key={field.name} type={field.type} name={field.name} placeholder={field.placeholder} style={{
-                      backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
-                      borderRadius: "8px", padding: "14px 16px",
-                      color: "#fff", fontSize: "14px", fontFamily: "var(--font-space-grotesk)",
-                      outline: "none", width: "100%", boxSizing: "border-box",
-                    }} />
-                  ))}
-                  <textarea placeholder="Message" name="message" rows={5} style={{
-                    backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
-                    borderRadius: "8px", padding: "14px 16px",
-                    color: "#fff", fontSize: "14px", fontFamily: "var(--font-space-grotesk)",
-                    outline: "none", resize: "vertical", width: "100%", boxSizing: "border-box",
-                  }} />
-                  <button type="submit" style={{
-                    backgroundColor: "rgb(40,233,140)", color: "rgb(0,0,0)",
-                    border: "none", borderRadius: "10px", padding: "14px",
-                    fontSize: "14px", fontWeight: 600, fontFamily: "var(--font-space-grotesk)",
-                    cursor: "pointer", width: "100%",
-                  }}>
-                    Send Message
-                  </button>
-                </form>
+                {/* Form — always visible */}
+                <ContactForm />
               </div>
             </section>
 

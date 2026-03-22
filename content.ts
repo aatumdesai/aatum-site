@@ -29,10 +29,10 @@ export const content = {
 
   // ── Stats ───────────────────────────────────
   stats: [
-    { value: "6+", label: "Years of Experience" },
-    { value: "MBA", label: "Degree" },
-    { value: "Tech", label: "Current Industry" },
-    { value: "Xm", label: "Revenue Achieved" },
+    { value: "6+", label: "Years of Exp." },
+    { value: "MBA", label: "2025" },
+    { value: "Tech", label: "Industry" },
+    { value: "B2B", label: "SaaS" },
   ],
 
   // ── Experience ──────────────────────────────

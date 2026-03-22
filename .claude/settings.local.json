@@ -25,7 +25,9 @@
       "Bash(curl -s --tlsv1.2 -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
       "Bash(curl -v \"https://resume-cv.framer.website/\")",
       "Bash(curl -sk --ssl-no-revoke -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(/dev/null grep:*)",
+      "Bash(/dev/null ls:*)"
     ]
   }
 }
