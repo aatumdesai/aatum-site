@@ -21,7 +21,7 @@ export const content = {
     "Business Strategist",
     "Guitar Hero",
     "Chess Player",
-    "Gamer",
+    "Golfer",
   ],
 
   about:
@@ -30,8 +30,8 @@ export const content = {
   // ── Stats ───────────────────────────────────
   stats: [
     { value: "6+", label: "Years of Experience" },
-    { value: "3", label: "Companies" },
-    { value: "3", label: "Industries" },
+    { value: "MBA", label: "Degree" },
+    { value: "Tech", label: "Current Industry" },
     { value: "Xm", label: "Revenue Achieved" },
   ],
 
@@ -43,7 +43,7 @@ export const content = {
       dates: "Sep 2025 – Present",
       location: "City, State",
       bullets: [
-        "Directed roadmap prioritization across 60 AI use cases using market research (MaxDiff survey) to identify customer preferences; guided allocation of engineering capacity and GTM investment toward highest-impact adoption drivers.",
+        "Directed roadmap prioritization across 60 AI use cases using market research (MaxDiff survey) to identify customer preferences; guided GTM investment toward highest-impact adoption drivers.",
         "Built customer segmentation model to prioritize expansion accounts for identified seat-overage opportunity, increasing efficiency of revenue capture and converting excess usage into incremental $1M contracted ARR.",
         "Redesigned churn risk framework by integrating AI-derived customer call transcript sentiment with product health metrics, improving accuracy of high-risk account ranking by 22%, enabling targeted retention strategies.",
       ],
@@ -84,7 +84,7 @@ export const content = {
       institution: "Georgia Institute of Technology, Atlanta",
       dates: "2013 – 2017",
       description:
-        "Completed with minor in Economics and certificate in Entrepreneurship.",
+        "Minor in Economics / Certificate in Entrepreneurship.",
     },
   ],
 

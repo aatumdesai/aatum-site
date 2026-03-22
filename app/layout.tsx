@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lorem Ipsum",
-  description: "Personal site",
+  title: "Aatum Desai",
+  description: "Business Strategy & Insights Manager — UCLA Anderson MBA. Personal site of Aatum Desai.",
 };
 
 export default function RootLayout({
