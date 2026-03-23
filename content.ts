@@ -19,7 +19,7 @@ export const content = {
   // Add short words or phrases — they will type, pause, delete, then cycle.
   typewriterWords: [
     "Business Strategist",
-    "Guitar Hero",
+    "Guitarist",
     "Chess Player",
     "Golfer",
   ],
@@ -29,10 +29,11 @@ export const content = {
 
   // ── Stats ───────────────────────────────────
   stats: [
-    { value: "6+", label: "Years of Exp." },
-    { value: "MBA", label: "2025" },
-    { value: "Tech", label: "Industry" },
+    { value: "6+", label: "Years Exp." },
+    { value: "BizStrat", label: "Function" },
+    { value: "MBA", label: "UCLA '25" },
     { value: "B2B", label: "SaaS" },
+    { value: "SF", label: "Location" },
   ],
 
   // ── Experience ──────────────────────────────
@@ -76,15 +77,18 @@ export const content = {
       title: "Master of Business Administration",
       institution: "University of California, Los Angeles",
       dates: "2023 – 2025",
-      description:
-        "Honors: Dean’s Fellowship, Investment Fund Fellowship, Tepper Tech Challenge (2nd Place), GMAT 730 (96th percentile).\nCapstone: Advised client on acquisition of online car auction platform, developed GTM strategy rooted in customer research."
+      bullets: [
+        "Honors: Dean’s Fellowship, Investment Fund Fellowship, Tepper Tech Challenge (2nd Place), GMAT 730 (96th percentile).",
+        "Capstone: Advised client on acquisition of online car auction platform, developed GTM strategy rooted in customer research.",
+      ],
     },
     {
       title: "Bachelor of Science in Mechanical Engineering",
       institution: "Georgia Institute of Technology, Atlanta",
       dates: "2013 – 2017",
-      description:
+      bullets: [
         "Minor in Economics / Certificate in Entrepreneurship.",
+      ],
     },
   ],
 
