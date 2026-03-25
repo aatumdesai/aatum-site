@@ -83,8 +83,35 @@ h1, h2, h3, h4 {
     align-items: flex-start !important;
   }
   .card-date-badge {
+    flex-basis: 100% !important;
     margin-left: 58px !important;
-    margin-top: 2px !important;
+    margin-top: 4px !important;
   }
+  .stats-row {
+    gap: 20px 32px !important;
+    justify-content: center !important;
+  }
+  .stat-item {
+    min-width: calc(33% - 24px) !important;
+    align-items: center !important;
+  }
+  .mobile-only-divider {
+    display: block !important;
+    height: 1px;
+    width: 100%;
+    background-color: rgb(36,36,36);
+    flex-shrink: 0;
+    margin: 16px 0 !important;
+  }
+  .right-col {
+    gap: 24px !important;
+  }
+  .content-card {
+    padding: 14px 16px !important;
+  }
+}
+
+.mobile-only-divider {
+  display: none;
 }
 

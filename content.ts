@@ -41,6 +41,7 @@ export const content = {
     {
       company: "Productboard",
       role: "Business Strategy & Insights Manager",
+      mobileRole: "Business Strategy & Insights Mgr.",
       dates: "Sep 2025 – Present",
       location: "City, State",
       bullets: [
@@ -61,6 +62,7 @@ export const content = {
     {
       company: "PINN Investments",
       role: "Strategy & Operations, Senior Associate",
+      mobileRole: "Strategy & Operations, Sr. Associate",
       dates: "Dec 2018 – Feb 2024",
       location: "City, State",
       bullets: [
@@ -84,6 +86,7 @@ export const content = {
     },
     {
       title: "Bachelor of Science in Mechanical Engineering",
+      mobileTitle: "B.S. Mechanical Engineering",
       institution: "Georgia Institute of Technology, Atlanta",
       dates: "2013 – 2017",
       bullets: [

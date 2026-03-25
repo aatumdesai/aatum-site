@@ -11,6 +11,18 @@ import {
 } from "@phosphor-icons/react";
 import { siPython, siLooker } from "simple-icons";
 
+// ── Mobile detection ──────────────────────────────────────────
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 // ── Typewriter word → Twemoji icon ────────────────────────────
 const TWEMOJI = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg";
 const TYPEWRITER_ICONS: Record<string, React.ReactNode> = {
@@ -267,6 +279,7 @@ function ContactForm() {
 
 // ── Page ──────────────────────────────────────────────────────
 export default function Home() {
+  const isMobile = useIsMobile();
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#000" }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -342,7 +355,7 @@ export default function Home() {
               </div>
 
               {/* Buttons */}
-              <div style={{ display: "flex", gap: "7px", width: "100%", height: "42px" }}>
+              <div className="desktop-only" style={{ display: "flex", gap: "7px", width: "100%", height: "42px" }}>
                 <a href="/Aatum Desai Resume.pdf" download style={{
                   flex: "1 0 0", display: "flex", alignItems: "center", justifyContent: "center",
                   gap: "6px", borderRadius: "8px", backgroundColor: "rgb(28,28,28)",
@@ -364,6 +377,9 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Divider between card and content — mobile only */}
+          <div className="mobile-only-divider" />
 
           {/* ── Right Content ── */}
           <main className="right-col" style={{ flex: "1 0 0", display: "flex", flexDirection: "column", gap: "40px", minWidth: 0 }}>
@@ -399,30 +415,38 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* About blurb — always visible */}
-              <p style={{
+              {/* About blurb — desktop only */}
+              <p className="desktop-only" style={{
                 fontSize: "16px", fontWeight: 400, fontFamily: "var(--font-space-grotesk)",
                 lineHeight: "1.6em", letterSpacing: "-0.02em", color: "#fff", margin: 0,
               }}>
                 {content.about}
               </p>
 
-              {/* Stats — desktop only */}
-              <div className="desktop-only" style={{ display: "flex", flexDirection: "row", gap: "40px", alignItems: "center", flexWrap: "wrap" }}>
-                {content.stats.map((stat, i) => (
-                  <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                    <div style={{
-                      fontFamily: "var(--font-space-grotesk)", fontSize: "30px", fontWeight: 600,
-                      color: "#28e98c", lineHeight: 1,
-                    }}>
-                      {stat.value}
+              {/* Stats — shown on all screen sizes */}
+              {isMobile ? (
+                <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "100%" }}>
+                  {[content.stats.slice(0, 2), content.stats.slice(2)].map((row, ri) => (
+                    <div key={ri} style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", width: "100%" }}>
+                      {row.map((stat, i) => (
+                        <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+                          <div style={{ fontFamily: "var(--font-space-grotesk)", fontSize: "30px", fontWeight: 600, color: "#28e98c", lineHeight: 1 }}>{stat.value}</div>
+                          <p style={{ fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em", color: "#bbb", margin: 0, textAlign: "center" }}>{stat.label}</p>
+                        </div>
+                      ))}
                     </div>
-                    <p style={{ fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em", color: "#bbb", margin: 0 }}>
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "row", gap: "40px", alignItems: "center", flexWrap: "wrap" }}>
+                  {content.stats.map((stat, i) => (
+                    <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+                      <div style={{ fontFamily: "var(--font-space-grotesk)", fontSize: "30px", fontWeight: 600, color: "#28e98c", lineHeight: 1 }}>{stat.value}</div>
+                      <p style={{ fontSize: "16px", fontWeight: 500, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.6em", color: "#bbb", margin: 0 }}>{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </section>
 
             <Divider />
@@ -432,23 +456,32 @@ export default function Home() {
               <SectionHeading icon={<SuitcaseSimpleIcon size={24} weight="fill" />}>Experience</SectionHeading>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {content.experience.map((job, i) => (
-                  <div key={i} style={{
+                  <div key={i} className="content-card" style={{
                     backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
                     {/* Header: always visible */}
-                    <div className="card-header-row" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
-                      <CompanyLogo name={job.company} />
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 2px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.2em" }}>
-                          {job.role}
-                        </p>
-                        <p style={{ fontSize: "16px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.3em" }}>
-                          {job.company}
-                        </p>
+                    {isMobile ? (
+                      <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "8px" }}>
+                        <p style={{ fontSize: "17px", fontWeight: 600, color: "#fff", margin: 0, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.3em" }}>{job.mobileRole ?? job.role}</p>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                          <CompanyLogo name={job.company} />
+                          <div style={{ display: "flex", flexDirection: "column", gap: "3px", justifyContent: "center" }}>
+                            <p style={{ fontSize: "14px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, lineHeight: "1.2em" }}>{job.company}</p>
+                            <p style={{ fontSize: "13px", color: "#777", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 400, lineHeight: "1.2em" }}>{job.dates}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="card-date-badge" style={dateBadge}>{job.dates}</div>
-                    </div>
+                    ) : (
+                      <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+                        <CompanyLogo name={job.company} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 2px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.2em" }}>{job.role}</p>
+                          <p style={{ fontSize: "16px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.3em" }}>{job.company}</p>
+                        </div>
+                        <div style={dateBadge}>{job.dates}</div>
+                      </div>
+                    )}
                     {/* Bullets — desktop only */}
                     <div className="desktop-only">
                       <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
@@ -489,23 +522,32 @@ export default function Home() {
               <SectionHeading icon={<CertificateIcon size={24} weight="fill" />}>Education</SectionHeading>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {content.education.map((edu, i) => (
-                  <div key={i} style={{
+                  <div key={i} className="content-card" style={{
                     backgroundColor: "rgb(16,16,16)", border: "1px solid rgb(48,48,48)",
                     borderRadius: "12px", padding: "20px 24px", display: "flex", flexDirection: "column",
                   }}>
                     {/* Header: always visible */}
-                    <div className="card-header-row" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
-                      <CompanyLogo name={edu.institution} color="#a78bfa" />
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 2px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.2em" }}>
-                          {edu.title}
-                        </p>
-                        <p style={{ fontSize: "16px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.3em" }}>
-                          {edu.institution}
-                        </p>
+                    {isMobile ? (
+                      <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "8px" }}>
+                        <p style={{ fontSize: "17px", fontWeight: 600, color: "#fff", margin: 0, fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.3em" }}>{edu.mobileTitle ?? edu.title}</p>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                          <CompanyLogo name={edu.institution} color="#a78bfa" />
+                          <div style={{ display: "flex", flexDirection: "column", gap: "3px", justifyContent: "center" }}>
+                            <p style={{ fontSize: "14px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, lineHeight: "1.2em" }}>{edu.institution}</p>
+                            <p style={{ fontSize: "13px", color: "#777", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 400, lineHeight: "1.2em" }}>{edu.dates}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="card-date-badge" style={dateBadge}>{edu.dates}</div>
-                    </div>
+                    ) : (
+                      <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+                        <CompanyLogo name={edu.institution} color="#a78bfa" />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ fontSize: "20px", fontWeight: 600, color: "#fff", margin: "0 0 2px 0", fontFamily: "var(--font-space-grotesk)", letterSpacing: "-0.02em", lineHeight: "1.2em" }}>{edu.title}</p>
+                          <p style={{ fontSize: "16px", color: "#bbb", margin: 0, fontFamily: "var(--font-space-grotesk)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: "1.3em" }}>{edu.institution}</p>
+                        </div>
+                        <div style={dateBadge}>{edu.dates}</div>
+                      </div>
+                    )}
                     {/* Bullets — desktop only */}
                     <div className="desktop-only">
                       <div style={{ height: "1px", backgroundColor: "rgb(48,48,48)", marginBottom: "16px" }} />
