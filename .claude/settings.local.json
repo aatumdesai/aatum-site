@@ -27,7 +27,10 @@
       "Bash(curl -sk --ssl-no-revoke -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://resume-cv.framer.website/\" -o /tmp/framer_page.html)",
       "Bash(npm install:*)",
       "Bash(/dev/null grep:*)",
-      "Bash(/dev/null ls:*)"
+      "Bash(/dev/null ls:*)",
+      "Bash(npm run:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(git push:*)"
     ]
   }
 }
