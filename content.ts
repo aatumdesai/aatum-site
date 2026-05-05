@@ -45,9 +45,10 @@ export const content = {
       dates: "Sep 2025 – Present",
       location: "City, State",
       bullets: [
-        "Directed roadmap prioritization across 60 AI use cases using market research (MaxDiff survey) to identify customer preferences; guided GTM investment toward highest-impact adoption drivers.",
+        "Directed roadmap prioritization across 60 AI use cases using market research (MaxDiff survey) to identify customer preferences; guided engineering capacity and GTM investment toward high impact adoption drivers.",
         "Built customer segmentation model to prioritize expansion accounts for identified seat-overage opportunity, increasing efficiency of revenue capture and converting excess usage into incremental $1M contracted ARR.",
         "Redesigned churn risk framework by integrating AI-derived customer call transcript sentiment with product health metrics, improving accuracy of high-risk account ranking by 22%, enabling targeted retention strategies.",
+        "Established performance management framework for new product launch by defining success metrics and building cross-functional reporting infrastructure, aligning Product, Marketing, Sales, and Customer Success.",
       ],
     },
     {

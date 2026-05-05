@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { content } from "../content";
 import {
   SuitcaseSimpleIcon, BrainIcon, TerminalWindowIcon, CertificateIcon, ChatCircleDotsIcon,
-  DownloadSimpleIcon, PaperPlaneTiltIcon, PhoneIcon, EnvelopeSimpleIcon, MapPinIcon,
+  DownloadSimpleIcon, PaperPlaneTiltIcon, EnvelopeSimpleIcon, MapPinIcon,
   CompassIcon, RocketIcon, TagIcon, ChartBarIcon, GearIcon, MagnifyingGlassIcon,
   CurrencyDollarIcon, UsersThreeIcon,
   DatabaseIcon, TableIcon, CloudIcon,
@@ -583,8 +583,6 @@ export default function Home() {
                 {/* Info cards — desktop only */}
                 <div className="desktop-only" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                   {[
-                    { label: "Contact No", value: content.contact.phone, href: `tel:${content.contact.phone}`,
-                      icon: <PhoneIcon size={28} weight="fill" color="#28e98c" /> },
                     { label: "Email", value: content.contact.email, href: `mailto:${content.contact.email}`,
                       icon: <EnvelopeSimpleIcon size={28} weight="fill" color="#28e98c" /> },
                     { label: "Address", value: content.contact.address, href: "https://www.google.com/maps",
