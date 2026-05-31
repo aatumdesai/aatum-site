@@ -25,7 +25,7 @@ export const content = {
   ],
 
   about:
-    "UCLA Anderson MBA and Business Strategy & Insights Manager at Productboard (B2B SaaS), leading cross-functional strategy across Product, GTM, and monetization. Translate complex analysis into clear prioritization, growth, and expansion decisions, partnering with senior stakeholders to drive alignment and execution.",
+    "UCLA Anderson MBA and Business Strategy & Insights Manager at Productboard (B2B SaaS), acting as strategy consultant across product, GTM, monetization, and operations. Works with agentic AI tools like Claude Code to run advanced analytics, automate operational workflows, and deliver data-driven recommendations to executive stakeholders.",
 
   // ── Stats ───────────────────────────────────
   stats: [
@@ -45,19 +45,20 @@ export const content = {
       dates: "Sep 2025 – Present",
       location: "City, State",
       bullets: [
-        "Directed roadmap prioritization across 60 AI use cases using market research (MaxDiff survey) to identify customer preferences; guided engineering capacity and GTM investment toward high impact adoption drivers.",
-        "Built customer segmentation model to prioritize expansion accounts for identified seat-overage opportunity, increasing efficiency of revenue capture and converting excess usage into incremental $1M contracted ARR.",
-        "Redesigned churn risk framework by integrating AI-derived customer call transcript sentiment with product health metrics, improving accuracy of high-risk account ranking by 22%, enabling targeted retention strategies.",
-        "Established performance management framework for new product launch by defining success metrics and building cross-functional reporting infrastructure, aligning Product, Marketing, Sales, and Customer Success.",
+        "Converted 60 AI use cases into prioritized product roadmap, using customer interviews and MaxDiff survey to identify high-value features and align engineering/GTM investment behind strongest commercial opportunities.",
+        "Built AI workflow in Gong to classify customer buying intent from call transcripts, matching it to product telemetry and enabling CSMs to drive targeted feature adoption toward each customer's goals.",
+        "Analyzed impact of shifting enterprise renewals onto AEs by isolating effects on net-new conversion, win rates, and cycle time, surfacing declining funnel productivity that drove leadership to return renewals to RMs.",
+        "Designed token-based pricing for new AI product, analyzing per-feature compute consumption to set credit pricing that protects SaaS-level margins through hybrid subscription-plus-usage model.",
+        "Operationalized seat-overage revenue capture, defining screening criteria across product usage, account health, and renewal timing, routing $1M+ in collectible expansion ARR to AEs as prioritized upsell plays.",
       ],
     },
     {
       company: "Abbott",
       role: "Product Manager Intern (MBA)",
-      dates: "Jun 2024 – Sep 2024",
+      dates: "Jun 2024 – Aug 2024",
       location: "City, State",
       bullets: [
-        "Analyzed healthcare provider adoption drivers through structured primary research, segmenting demand and informing differentiated positioning strategy for flagship medical device.",
+        "Conducted primary research with healthcare providers to identify adoption drivers for medical device product, informing segmented product positioning aligned to provider priorities.",
       ],
     },
     {
@@ -67,9 +68,10 @@ export const content = {
       dates: "Dec 2018 – Feb 2024",
       location: "City, State",
       bullets: [
-        "Led 0 to 1 investment strategy for Marriott-branded hotel development, synthesizing market demand, competitive positioning, and pricing inputs to refine product concept and increase projected IRR by 14%.",
-        "Drove $65M asset divestiture, leading financial modeling, seller positioning, and diligence strategy to achieve record valuation and 120% ROE.",
-	"Directed 20+ person cross-functional task force on $34M construction dispute, delivering forensic financial and schedule analysis that reduced exposure by $11M.",
+        "Spearheaded 0-to-1 product concept development for Marriott hotel, synthesizing market, competitive, and customer inputs to define product offering in partnership with design, driving 14% uplift in IRR.",
+        "Drove $65M divestiture of a flagship asset, leading due diligence, financial modeling, and positioning strategy to achieve a record-setting valuation and 120% return on equity.",
+        "Directed 20+ person cross-functional task force on $34M construction dispute, delivering forensic analysis to inform legal strategy and reduce exposure by $11M.",
+        "Enabled $12M in capital-deployment decisions by evaluating acquisition and ground-up development opportunities, modeling ROI, strategic fit, and long-term growth alignment.",
       ],
     },
   ],
@@ -112,12 +114,14 @@ export const content = {
   // ── Software ────────────────────────────────
   // Only the first 8 items are shown on the site.
   software: [
+    { name: "Claude Code" },
     { name: "SQL" },
-    { name: "Excel (Advanced)"  },
     { name: "Python" },
-    { name: "Looker" },
-    { name: "Sawtooth (Conjoint/Maxdiff)"},
+    { name: "Snowflake" },
     { name: "Salesforce" },
+    { name: "Gong" },
+    { name: "Amplitude" },
+    { name: "Conjoint/MaxDiff (Sawtooth)" },
   ],
 
   // ── Contact / Social ─────────────────────────

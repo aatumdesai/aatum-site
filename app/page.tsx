@@ -7,9 +7,9 @@ import {
   DownloadSimpleIcon, PaperPlaneTiltIcon, EnvelopeSimpleIcon, MapPinIcon,
   CompassIcon, RocketIcon, TagIcon, ChartBarIcon, GearIcon, MagnifyingGlassIcon,
   CurrencyDollarIcon, UsersThreeIcon,
-  DatabaseIcon, TableIcon, CloudIcon,
+  DatabaseIcon, CloudIcon, MicrophoneIcon, ChartLineUpIcon,
 } from "@phosphor-icons/react";
-import { siPython, siLooker } from "simple-icons";
+import { siPython, siClaude, siSnowflake } from "simple-icons";
 
 // ── Mobile detection ──────────────────────────────────────────
 function useIsMobile() {
@@ -186,12 +186,14 @@ const SawtoothIcon = () => (
 );
 
 const SOFTWARE_ICONS: Record<string, React.ReactNode> = {
-  "Python":                      siBrand(siPython),
-  "Looker":                      siBrand(siLooker),
+  "Claude Code":                 siBrand(siClaude),
   "SQL":                         <DatabaseIcon size={22} weight="fill" />,
-  "Excel (Advanced)":            <TableIcon size={22} weight="fill" />,
+  "Python":                      siBrand(siPython),
+  "Snowflake":                   siBrand(siSnowflake),
   "Salesforce":                  <CloudIcon size={22} weight="fill" />,
-  "Sawtooth (Conjoint/Maxdiff)": <SawtoothIcon />,
+  "Gong":                        <MicrophoneIcon size={22} weight="fill" />,
+  "Amplitude":                   <ChartLineUpIcon size={22} weight="fill" />,
+  "Conjoint/MaxDiff (Sawtooth)": <SawtoothIcon />,
 };
 
 const SKILL_PALETTE = [
@@ -512,7 +514,7 @@ export default function Home() {
             {/* ── Software ── */}
             <section id="software">
               <SectionHeading icon={<TerminalWindowIcon size={24} weight="fill" />}>Software</SectionHeading>
-              <SkillGrid items={content.software} iconMap={SOFTWARE_ICONS} max={6} />
+              <SkillGrid items={content.software} iconMap={SOFTWARE_ICONS} max={8} />
             </section>
 
             <Divider />
